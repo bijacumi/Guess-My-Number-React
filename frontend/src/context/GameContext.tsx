@@ -2,7 +2,8 @@ import React, { createContext, useState, useEffect } from "react";
 import type { GameContextType } from "./types";
 
 // Backend API URL
-const API_BASE_URL = "http://localhost:3001/api";
+const API_BASE_URL =
+  process.env.REACT_APP_API_URL || "http://localhost:3001/api";
 
 // Extended interface for game digit marking
 interface ExtendedGameContextType extends GameContextType {
