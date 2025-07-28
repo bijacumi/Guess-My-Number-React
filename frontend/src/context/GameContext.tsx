@@ -3,7 +3,7 @@ import type { GameContextType } from "./types";
 
 // Backend API URL
 const API_BASE_URL =
-  process.env.REACT_APP_API_URL || "http://localhost:3001/api";
+  import.meta.env.VITE_API_URL || "http://localhost:3001/api";
 
 // Extended interface for game digit marking
 interface ExtendedGameContextType extends GameContextType {
