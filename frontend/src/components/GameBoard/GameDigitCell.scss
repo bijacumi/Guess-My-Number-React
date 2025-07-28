@@ -1,0 +1,76 @@
+@import "../../styles/variables.scss";
+
+.game-digit-cell {
+  display: inline-block;
+  padding: 0;
+  text-align: center;
+  width: 24px;
+  height: 28px;
+  line-height: 28px;
+  font-size: 1.2rem;
+  vertical-align: middle;
+  position: relative;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+  margin-right: 4px;
+
+  &.clickable {
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba(124, 103, 127, 0.1);
+      border-radius: 4px;
+    }
+  }
+
+  &.marked-not-in {
+    background-color: rgba(128, 128, 128, 0.6); // darker transparent gray
+    border-radius: 4px;
+  }
+
+  &.marked-in {
+    background-color: rgba(255, 255, 0, 0.3); // transparent yellow
+    border-radius: 4px;
+  }
+
+  &.marked-position {
+    background-color: rgba(0, 255, 0, 0.3); // transparent green
+    border-radius: 4px;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.game-cell-dropdown {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  min-width: 55px;
+  z-index: 9999;
+  position: fixed;
+  pointer-events: auto;
+
+  .dropdown-option {
+    padding: 0.068rem 0.137rem;
+    cursor: pointer;
+    font-size: 0.546rem;
+    color: $text-color;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background-color 0.2s ease;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:hover {
+      background-color: #f8f9fa;
+    }
+
+    &:active {
+      background-color: #e9ecef;
+    }
+  }
+}

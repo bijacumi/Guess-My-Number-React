@@ -1,0 +1,34 @@
+// Color variables
+$primary-gradient-1: #f4c0b8;
+$primary-gradient-2: #e6cbc7;
+$text-color: #5b4c5e;
+
+// Button colors
+$button-bg: #7c677f;
+$button-hover-bg: #927995;
+$button-hover-text: #f1d9d6;
+$button-text: $primary-gradient-2;
+$button-success-gradient-1: #48bb78;
+$button-success-gradient-2: #38a169;
+
+$modal-bg: #ecd6d3;
+$table-clues-color: #69097c;
+$input-color: #7c677f;
+
+// Font sizes (reduced by 20%)
+$base-font-size: 24px; // was 30px
+$small-font-size: 19px; // was 24px
+$button-font-size: calc(#{$base-font-size} * 0.87);
+
+// Spacing
+$spacing-xs: 10px;
+$spacing-sm: 15px;
+$spacing-md: 20px;
+$spacing-lg: 30px;
+$spacing-xl: 50px;
+$spacing-xxl: 100px;
+
+// Border radius
+$border-radius-sm: 5px;
+$border-radius-lg: 5rem;
+$button-radius: $border-radius-lg;

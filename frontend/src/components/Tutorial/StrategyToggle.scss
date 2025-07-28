@@ -1,0 +1,43 @@
+@import "../../styles/variables.scss";
+
+.strategy-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  background-color: transparent;
+  color: #6c757d;
+  font-style: italic;
+
+  .toggle-container {
+    display: flex;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    padding: 2px;
+    border: 1px solid #dee2e6;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+    .toggle-btn {
+      padding: 0.25rem 0.75rem;
+      border: none;
+      background: transparent;
+      color: $text-color;
+      font-size: 0.7rem;
+      font-weight: 500;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+
+      &:hover {
+        background-color: rgba(124, 103, 127, 0.1);
+      }
+
+      &.active {
+        background-color: $text-color;
+        color: white;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+@import "../../styles/variables.scss";
+
+.header {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.2rem 0.5rem 0.5rem 0.5rem; // reduced top padding
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .header-buttons {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+
+    .btn {
+      &.active {
+        background-color: #28a745;
+        border-color: #28a745;
+
+        &:hover {
+          background-color: #218838;
+          border-color: #218838;
+        }
+      }
+    }
+  }
+}

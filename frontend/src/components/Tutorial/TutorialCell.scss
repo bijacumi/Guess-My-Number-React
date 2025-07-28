@@ -1,0 +1,91 @@
+@import "../../styles/variables.scss";
+
+.tutorial-cell {
+  padding: 0;
+  text-align: center;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  vertical-align: middle;
+  position: relative;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+
+  &.clickable {
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba(124, 103, 127, 0.1);
+      border-radius: 4px;
+    }
+  }
+
+  &.marked-in {
+    outline: 2px solid $text-color;
+    outline-offset: -2px;
+    border-radius: 4px;
+    background-color: transparent;
+  }
+
+  &.marked-out {
+    position: relative;
+
+    &::before {
+      content: "✕";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 2.5rem;
+      font-weight: 100;
+      color: #dc3545;
+      z-index: 2;
+      line-height: 1;
+      opacity: 0.6;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(220, 53, 69, 0.03);
+      border-radius: 4px;
+      z-index: 1;
+    }
+  }
+}
+
+.cell-dropdown {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  min-width: 66px;
+  z-index: 9999;
+  position: fixed;
+  pointer-events: auto;
+
+  .dropdown-option {
+    padding: 0.068rem 0.137rem;
+    cursor: pointer;
+    font-size: 0.546rem;
+    color: $text-color;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background-color 0.2s ease;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:hover {
+      background-color: #f8f9fa;
+    }
+
+    &:active {
+      background-color: #e9ecef;
+    }
+  }
+}

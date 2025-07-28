@@ -1,0 +1,130 @@
+.tutorial-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.tutorial-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+  color: #6c757d;
+  font-style: italic;
+}
+
+.tutorial-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+
+  .table-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    color: #5b4c5e;
+    padding: 10px 20px;
+    margin-bottom: 0;
+    height: 32px;
+    line-height: 32px;
+    align-items: center;
+
+    span {
+      flex: 1;
+      text-align: center;
+      white-space: nowrap;
+
+      &:first-child {
+        text-align: left;
+      }
+
+      &:last-child {
+        text-align: right;
+      }
+    }
+  }
+
+  .table-content {
+    display: flex;
+    gap: 2rem;
+    justify-content: space-between;
+  }
+
+  .digits-table,
+  .clues-table {
+    flex: 1;
+    border-collapse: collapse;
+
+    tbody {
+      tr {
+        td {
+          padding: 0.5rem;
+          text-align: center;
+          width: 40px;
+          height: 40px;
+          line-height: 40px;
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+
+  .digits-table {
+    tbody {
+      tr {
+        td {
+          font-size: 1.2rem; // increased by 20% from 1rem
+          font-weight: bold;
+          color: #5b4c5e;
+        }
+      }
+    }
+  }
+
+  .clues-table {
+    tbody {
+      tr {
+        td {
+          font-size: 0.84rem; // increased by 20% from 0.7rem
+          color: #666;
+        }
+      }
+    }
+
+    .clues-cell {
+      &.crossed-out {
+        color: #999;
+      }
+
+      &.highlighted {
+        color: #dc3545;
+        font-weight: bold;
+      }
+    }
+
+    // Vertical line for crossed out columns
+    tbody {
+      tr {
+        td.column-crossed-out {
+          position: relative;
+
+          &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 3px;
+            height: 100%;
+            background-color: #999;
+            transform: translateX(-50%);
+            z-index: 1;
+          }
+        }
+      }
+    }
+  }
+}

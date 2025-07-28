@@ -1,0 +1,199 @@
+@import "../../styles/variables.scss";
+
+* {
+  font-size: $base-font-size;
+}
+
+.game-container {
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  color: $text-color;
+  font-weight: bold;
+  align-items: center;
+
+  .button-group {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: $spacing-xs;
+    margin-bottom: $spacing-xs;
+  }
+
+  h1 {
+    font-size: $base-font-size;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    margin-bottom: $spacing-xs;
+  }
+
+  .explanation {
+    margin: 0 $spacing-xxl $spacing-md;
+    text-align: center;
+    font-size: $small-font-size;
+  }
+
+  .game-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .input-section {
+      width: 100%;
+      max-width: 800px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 20px;
+
+      .input-group {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: $spacing-xxl;
+        width: 100%;
+
+        input {
+          width: 270px;
+          color: $input-color;
+          background-color: $modal-bg;
+          padding: 0.2rem 1rem;
+          border: none;
+          border-radius: $border-radius-sm;
+          font-size: calc($base-font-size * 0.87);
+          text-align: center;
+          height: 38px;
+          line-height: 38px;
+
+          &:focus {
+            outline: none;
+          }
+
+          &:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+          }
+        }
+
+        .btn {
+          min-width: 180px;
+          height: 38px;
+          font-size: calc($base-font-size * 0.87);
+          padding: 0.2rem 1rem;
+          line-height: 1;
+          margin: 0;
+        }
+      }
+
+      .message-container {
+        height: 16px;
+        margin-top: 12px;
+
+        .error-message,
+        .placeholder-message {
+          color: red;
+          font-size: 14px; // reduced from 18px by ~20%
+          font-weight: normal;
+          text-align: center;
+          white-space: nowrap;
+          line-height: 16px;
+        }
+
+        .placeholder-message {
+          visibility: hidden;
+        }
+      }
+    }
+
+    .main-work {
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      justify-content: center;
+      gap: $spacing-xxl;
+      margin-top: 0;
+
+      .left-column {
+        table {
+          border-collapse: collapse;
+          text-align: center;
+
+          th,
+          td {
+            padding: $spacing-xs $spacing-md;
+            height: 28px;
+            line-height: 28px;
+            font-size: 1rem; // reduced from 1.2rem by ~20%
+            vertical-align: middle;
+            text-align: center;
+          }
+
+          th {
+            font-weight: bold;
+            white-space: nowrap;
+          }
+        }
+
+        .digit-row {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+
+      .right-column {
+        .table-header {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: $spacing-xs;
+          gap: $spacing-xxl;
+
+          span {
+            text-align: center;
+            min-width: 120px;
+            white-space: nowrap;
+            &:last-child {
+              color: $table-clues-color;
+            }
+          }
+        }
+
+        .table-content {
+          display: flex;
+          justify-content: space-between;
+          gap: $spacing-xxl;
+
+          table {
+            border-collapse: collapse;
+            text-align: center;
+
+            td {
+              width: 40px;
+              height: 32px;
+              line-height: 32px;
+              text-align: center;
+              vertical-align: middle;
+            }
+          }
+
+          .clues-table {
+            color: $table-clues-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Add background gradient to body in App.scss
+body {
+  background: linear-gradient(
+    to top left,
+    $primary-gradient-1,
+    $primary-gradient-2
+  );
+}

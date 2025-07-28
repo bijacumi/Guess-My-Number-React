@@ -1,0 +1,28 @@
+@import "../../styles/variables.scss";
+
+.manual-strategy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+  color: #6c757d;
+
+  .manual-strategy-content {
+    text-align: center;
+
+    h3 {
+      color: $text-color;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+
+    p {
+      margin: 0.5rem 0;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+  }
+}

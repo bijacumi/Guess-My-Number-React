@@ -1,0 +1,32 @@
+@import "./styles/variables.scss";
+@import "./styles/buttons.scss";
+
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(
+    to top left,
+    $primary-gradient-1,
+    $primary-gradient-2
+  );
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+#root {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.app {
+  min-height: 100vh;
+  max-width: 1200px;
+  width: 100%;
+  padding: $spacing-md;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

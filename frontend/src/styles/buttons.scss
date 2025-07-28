@@ -1,0 +1,31 @@
+@import "./variables.scss";
+
+.btn {
+  color: $primary-gradient-2;
+  background-color: $button-bg;
+  border-radius: 1.5rem;
+  border: none;
+  padding: 0.08rem 0.8rem; // reduced vertical padding by 30% (0.15 * 0.7 = 0.105)
+  margin: 0.15rem;
+  text-overflow: hidden;
+  text-align: center;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 1.8rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background-color: $button-hover-bg;
+    color: $button-hover-text;
+  }
+
+  &.success {
+    background-color: $button-success-gradient-1;
+    &:hover {
+      background-color: $button-success-gradient-2;
+    }
+  }
+}
