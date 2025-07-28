@@ -44,11 +44,16 @@
 
     .input-section {
       width: 100%;
-      max-width: 800px;
+      max-width: 400px; // Reduced to match left column width
       display: flex;
       flex-direction: column;
       align-items: center;
       margin-bottom: 20px;
+      position: relative;
+      left: 50%;
+      transform: translateX(
+        -125%
+      ); // Move further left to center over the left column
 
       .input-group {
         display: flex;
@@ -58,7 +63,7 @@
         width: 100%;
 
         input {
-          width: 270px;
+          width: 200px; // Reduced from 270px
           color: $input-color;
           background-color: $modal-bg;
           padding: 0.2rem 1rem;
@@ -80,7 +85,7 @@
         }
 
         .btn {
-          min-width: 180px;
+          min-width: 140px; // Reduced from 180px
           height: 38px;
           font-size: calc($base-font-size * 0.87);
           padding: 0.2rem 1rem;
@@ -196,4 +201,62 @@ body {
     $primary-gradient-1,
     $primary-gradient-2
   );
+}
+
+// Mobile responsive styles
+@media (max-width: 768px) {
+  .game-container {
+    .game-content {
+      .input-section {
+        max-width: 100%;
+        padding: 0 20px;
+        position: static;
+        left: auto;
+        transform: none; // Reset positioning on mobile
+
+        .input-group {
+          flex-direction: column;
+          gap: $spacing-md;
+          width: 100%;
+          max-width: 300px; // Limit width on mobile
+
+          input {
+            width: 100%;
+            max-width: 200px; // Smaller input for mobile
+          }
+
+          .btn {
+            min-width: 120px; // Smaller button for mobile
+            width: 100%;
+            max-width: 200px;
+          }
+        }
+      }
+
+      .main-work {
+        flex-direction: column;
+        gap: $spacing-lg;
+        padding: 0 20px;
+
+        .left-column {
+          width: 100%;
+
+          table {
+            width: 100%;
+
+            th,
+            td {
+              padding: $spacing-xs $spacing-sm;
+              font-size: 0.9rem;
+            }
+          }
+        }
+
+        .right-column {
+          width: 100%;
+          order: 2; // Move tutorial below game board on mobile
+        }
+      }
+    }
+  }
 }

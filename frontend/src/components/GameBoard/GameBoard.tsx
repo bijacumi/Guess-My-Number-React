@@ -108,7 +108,7 @@ const GameBoard: React.FC = () => {
               disabled={!isPlaying}
             />
             <button className="btn" onClick={handleGuess} disabled={!isPlaying}>
-              Check the number
+              Check Guess
             </button>
           </div>
           <div className="message-container">
