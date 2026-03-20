@@ -14,11 +14,11 @@ const App: React.FC = () => {
     openModal,
     closeModal,
     resetGame,
-    markAllOccurrencesOfDigit,
+    //markAllOccurrencesOfDigit,
   } = useGame();
-  const { resetTutorial, setGameDigitMarkCallback } = useTutorial();
+  const { resetTutorial /*setGameDigitMarkCallback*/ } = useTutorial();
 
-  // Set up the callback to connect tutorial and game contexts
+  // Set up the callback to connect tutorial and game contexts. 03.20.2026 - I need to get back to this when I get to the point of fixing the highlighting of the digits in the game board according to the highlighting in the tutorial.
   /*React.useEffect(() => {
     setGameDigitMarkCallback(markAllOccurrencesOfDigit);
   }, [setGameDigitMarkCallback, markAllOccurrencesOfDigit]);*/
