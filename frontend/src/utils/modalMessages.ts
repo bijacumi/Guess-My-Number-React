@@ -45,13 +45,13 @@ You only have 10 turns in order to win. Have fun!`,
     title: "Suggestions for a winning strategy",
     content: `One winning strategy is to split the digits 0 to 9 into 4 groups to try to figure out how many digits from each group are in the number to be guessed.
 
-**Step 1:** Input your first guess. The computer will split the digits into 4 groups and display them in the strategy table on the right. It will also show the total possibilities for how many digits from the groups are present in the number.
+**Step 1:** Input your first guess. The computer will split the digits into 4 groups and display them in the strategy table on the right. It will also show the all the possibilities of how the guessed digits are spread across the two groups.
 
-**Step 2:** For your second try, scramble the digits from the first group and add the third group.
+**Step 2:** For your second try, scramble the digits from the first group (to get more information about their position) and add the third group.
 
-**Step 3:** Use the digits from groups 2 and 3 and select a random digit from the fourth group.
+**Step 3:** Use the digits from groups 2 and 3 (again, change their position from their last usage for more information) and select a random digit from the fourth group.
 
-By the third step (or even earlier), the computer will eliminate impossible options and show you how many digits are in each group (highlighted in red) to help you find the number faster.
+By the third step (or even earlier), the computer will eliminate impossible options and show you how many digits are in each group (highlighted in red) to help you find the number faster. And you will know if the digit you added from the fourth group is in the number or not.
 
 The clues offered in this strategy will only work if you follow the first three steps as described above. Have fun!`,
     type: "tutorial",
@@ -94,7 +94,7 @@ The clues offered in this strategy will only work if you follow the first three 
 
 export const getModalMessage = (
   type: string,
-  customData?: { number?: number; turns?: number; message?: string }
+  customData?: { number?: number; turns?: number; message?: string },
 ): ModalMessage => {
   const baseMessage = modalMessages[type];
 

@@ -19,9 +19,9 @@ const App: React.FC = () => {
   const { resetTutorial, setGameDigitMarkCallback } = useTutorial();
 
   // Set up the callback to connect tutorial and game contexts
-  React.useEffect(() => {
+  /*React.useEffect(() => {
     setGameDigitMarkCallback(markAllOccurrencesOfDigit);
-  }, [setGameDigitMarkCallback, markAllOccurrencesOfDigit]);
+  }, [setGameDigitMarkCallback, markAllOccurrencesOfDigit]);*/
 
   const handleModalPrimaryAction = () => {
     if (modalState.type === "win" || modalState.type === "lose") {

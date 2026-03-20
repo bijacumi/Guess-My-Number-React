@@ -12,8 +12,8 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Middleware
-app.use(cors());
-app.use(express.json());
+app.use(cors()); //to be able to call the backend from the frontend
+app.use(express.json()); //to be able to parse the request body in JSON format
 
 // Game state (in memory for now, will be moved to database later)
 let currentGame = {
@@ -77,13 +77,13 @@ app.post("/api/game/guess", (req, res) => {
       });
     }
 
-    // Check the guess
+    // Check the guess and extract the exactMatches and partialMatches
     const { exactMatches, partialMatches } = checkGuess(
       guess,
-      currentGame.targetNumber
+      currentGame.targetNumber,
     );
 
-    // Update game state
+    // Update game state with the new information
     currentGame.turnsRemaining--;
     currentGame.gameHistory.push({
       guess,
@@ -100,7 +100,7 @@ app.post("/api/game/guess", (req, res) => {
         partialMatches,
         gameOver: true,
         won: true,
-        turnsTaken: currentGame.gameHistory.length,
+        turnsTaken: currentGame.gameHistory.length, //add 1 here because the current turn is not counted yet. Actually check to see if the problem is here or in another place, maybe on the frontend.
         targetNumber: currentGame.targetNumber,
       });
     }
@@ -171,5 +171,5 @@ app.get("/api/health", (req, res) => {
 // Start server
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
-  console.log(`📊 Environment: ${process.env.NODE_ENV}`);
+  console.log(`📊 Environment: ${process.env.NODE_ENV || "development"}`); //if the NODE_ENV is not set, default to development
 });

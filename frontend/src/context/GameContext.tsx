@@ -10,11 +10,11 @@ interface ExtendedGameContextType extends GameContextType {
   markGameDigit: (
     rowIndex: number,
     digitIndex: number,
-    mark: "not-in" | "in" | "position" | "undo"
+    mark: "not-in" | "in" | "position" | "undo",
   ) => void;
   getGameDigitMark: (
     rowIndex: number,
-    digitIndex: number
+    digitIndex: number,
   ) => "not-in" | "in" | "position" | null;
   markAllOccurrencesOfDigit: (digit: string, mark: "not-in") => void;
 }
@@ -22,7 +22,7 @@ interface ExtendedGameContextType extends GameContextType {
 // Create a context with undefined as initial value
 // This context will hold all game-related state and functions
 export const GameContext = createContext<ExtendedGameContextType | undefined>(
-  undefined
+  undefined,
 );
 
 // GameProvider component that wraps the app and provides game state to all children
@@ -42,6 +42,8 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({
 
   // State to track backend connection status
   const [isBackendConnected, setIsBackendConnected] = useState<boolean>(true);
+
+  // State to track game digit background colors for clues of the presence of those digits in the number
   const [gameDigitMarks, setGameDigitMarks] = useState<
     Record<string, "not-in" | "in" | "position">
   >({});
@@ -59,7 +61,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({
   // Modal actions
   const openModal = (
     type: string,
-    customData?: { number?: number; turns?: number }
+    customData?: { number?: number; turns?: number },
   ) => {
     setModalState({ isOpen: true, type, customData });
   };
@@ -73,7 +75,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({
     generateRandomNumber();
   }, []); // Empty dependency array means this runs once on mount
 
-  // Function to start a new game via backend API
+  // This calls to the backend to start a new game by generating a random number. the generation is done by the backend.
   const generateRandomNumber = async () => {
     try {
       setIsBackendConnected(true);
@@ -181,9 +183,9 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({
   const markGameDigit = (
     rowIndex: number,
     digitIndex: number,
-    mark: "not-in" | "in" | "position" | "undo"
+    mark: "not-in" | "in" | "position" | "undo",
   ) => {
-    console.log("markGameDigit called with:", rowIndex, digitIndex, mark);
+    //console.log("markGameDigit called with:", rowIndex, digitIndex, mark);
     const key = `${rowIndex}-${digitIndex}`;
     if (mark === "undo") {
       setGameDigitMarks((prev) => {
@@ -202,7 +204,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({
   // Function to get game digit mark
   const getGameDigitMark = (
     rowIndex: number,
-    digitIndex: number
+    digitIndex: number,
   ): "not-in" | "in" | "position" | null => {
     const key = `${rowIndex}-${digitIndex}`;
     return gameDigitMarks[key] || null;
@@ -216,7 +218,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({
       if (!digit || typeof digit !== "string" || digit === "") {
         console.warn(
           "markAllOccurrencesOfDigit called with invalid digit:",
-          digit
+          digit,
         );
         return;
       }
@@ -224,7 +226,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({
       if (mark !== "not-in") {
         console.warn(
           "markAllOccurrencesOfDigit called with invalid mark:",
-          mark
+          mark,
         );
         return;
       }
@@ -248,7 +250,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({
         return newMarks;
       });
     },
-    [gameHistory] // Remove gameDigitMarks from dependencies
+    [gameHistory], // Remove gameDigitMarks from dependencies
   );
 
   // Provide all game state and functions to children components

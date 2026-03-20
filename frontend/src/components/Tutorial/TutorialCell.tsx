@@ -128,11 +128,11 @@ const TutorialCell: React.FC<TutorialCellProps> = ({
                 className="dropdown-option"
                 onClick={() => handleMark("out")}
               >
-                Is NOT in the number
+                NOT in the number
               </div>
             )}
           </div>,
-          document.body
+          document.body,
         )}
     </>
   );

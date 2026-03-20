@@ -1,4 +1,4 @@
-// Local game logic functions (kept for potential future use)
+// Local game logic functions (kept for potential future use). I switched to backend logic because it's more efficient and easier to implement. Keep it here for reference.
 
 /**
  * Generate a random 5-digit number with unique digits, first digit not 0

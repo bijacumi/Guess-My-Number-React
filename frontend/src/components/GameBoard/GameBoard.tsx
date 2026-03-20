@@ -1,27 +1,21 @@
-import React, { useContext, useState } from "react";
-import { GameContext } from "../../context/GameContext";
+import React, { useState } from "react";
+import { useGame } from "../../context/useGame";
 import { useTutorial } from "../../context/TutorialContext";
 import Tutorial from "../Tutorial/Tutorial";
 import GameDigitCell from "./GameDigitCell";
 import "./GameBoard.scss";
 
 const GameBoard: React.FC = () => {
-  const gameContext = useContext(GameContext);
-  const { updateTutorialFromGuess } = useTutorial();
-  const [guess, setGuess] = useState<string>("");
-  const [error, setError] = useState<string>("");
-
-  if (!gameContext) {
-    throw new Error("GameBoard must be used within a GameProvider");
-  }
-
   const {
     gameHistory,
     isPlaying,
     checkGuess,
     markGameDigit,
     getGameDigitMark,
-  } = gameContext;
+  } = useGame();
+  const { updateTutorialFromGuess } = useTutorial();
+  const [guess, setGuess] = useState<string>("");
+  const [error, setError] = useState<string>("");
 
   // Handle input changes with validation
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -60,6 +54,7 @@ const GameBoard: React.FC = () => {
     setError("");
     const guessNumber = parseInt(guess);
 
+    //do I still need to perform this validation here? I have done it so many times already, both on the frontend and the backend.
     if (isNaN(guessNumber)) {
       setError("Please enter a valid number");
       return;
@@ -78,7 +73,7 @@ const GameBoard: React.FC = () => {
       guessNumber,
       result.exactMatches,
       result.partialMatches,
-      currentTurn
+      currentTurn,
     );
 
     setGuess("");

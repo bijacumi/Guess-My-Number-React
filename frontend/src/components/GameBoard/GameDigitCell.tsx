@@ -149,7 +149,7 @@ const GameDigitCell: React.FC<GameDigitCellProps> = ({
               </div>
             )}
           </div>,
-          document.body
+          document.body,
         )}
     </>
   );

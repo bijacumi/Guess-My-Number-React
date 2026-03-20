@@ -1,15 +1,9 @@
-import React, { useContext } from "react";
-import { GameContext } from "../../context/GameContext";
+import React from "react";
+import { useGame } from "../../context/useGame";
 import "./Footer.scss";
 
 const Footer: React.FC = () => {
-  const gameContext = useContext(GameContext);
-
-  if (!gameContext) {
-    throw new Error("Footer must be used within a GameProvider");
-  }
-
-  const { currentTurns } = gameContext;
+  const { currentTurns } = useGame();
 
   return (
     <footer>

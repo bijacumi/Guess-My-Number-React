@@ -9,7 +9,7 @@ const DigitsTable: React.FC = () => {
   const handleCellMark = (
     rowIndex: number,
     cellIndex: number,
-    mark: "in" | "out" | "undo"
+    mark: "in" | "out" | "undo",
   ) => {
     markCell(rowIndex, cellIndex, mark);
   };

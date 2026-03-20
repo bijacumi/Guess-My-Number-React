@@ -15,9 +15,9 @@ const generateRandomNumber = () => {
     }
   }
   // Convert array of digits to a number
-  const number = parseInt(digits.join(""));
-  console.log("🎯 Random number for testing:", number);
-  return number;
+  const targetNumber = parseInt(digits.join(""));
+  console.log("🎯 Random number for testing:", targetNumber); //remove in production
+  return targetNumber;
 };
 
 /**
@@ -61,6 +61,11 @@ const checkGuess = (guess, targetNumber) => {
  */
 const validateGuess = (guess) => {
   const guessStr = String(guess);
+
+  // Check if the guess contains only digits
+  if (!/^\d+$/.test(guessStr)) {
+    return { isValid: false, error: "Guess must contain digits only" };
+  }
 
   // Check if it's a 5-digit number
   if (guessStr.length !== 5) {

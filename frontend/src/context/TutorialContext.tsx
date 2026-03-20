@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useState, useContext, useRef } from "react";
 import type { TutorialState, TutorialData } from "../utils/tutorialLogic";
 import {
   initializeTutorialState,
@@ -19,17 +19,17 @@ interface TutorialContextType {
     guess: number,
     exactMatches: number,
     partialMatches: number,
-    turn: number
+    turn: number,
   ) => void;
   markCell: (row: number, col: number, mark: "in" | "out" | "undo") => void;
   getCellMark: (row: number, col: number) => "in" | "out" | null;
   setGameDigitMarkCallback: (
-    callback: (digit: string, mark: "not-in") => void
+    callback: (digit: string, mark: "not-in") => void,
   ) => void;
 }
 
 export const TutorialContext = createContext<TutorialContextType | undefined>(
-  undefined
+  undefined,
 );
 
 export const useTutorial = () => {
@@ -43,8 +43,9 @@ export const useTutorial = () => {
 export const TutorialProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
+  const continueTutorial = useRef(true);
   const [tutorialState, setTutorialState] = useState<TutorialState>(
-    initializeTutorialState()
+    initializeTutorialState(),
   );
   const [tutorialData, setTutorialData] = useState<TutorialData>({
     sumOfCenteredDisplaced: [],
@@ -52,8 +53,9 @@ export const TutorialProvider: React.FC<{ children: React.ReactNode }> = ({
   });
   const [isTutorialVisible, setIsTutorialVisible] = useState<boolean>(false);
   const [strategyMode, setStrategyMode] = useState<"automatic" | "manual">(
-    "automatic"
+    "automatic",
   );
+
   const [cellMarks, setCellMarks] = useState<Record<string, "in" | "out">>({});
   const [gameDigitMarkCallback, setGameDigitMarkCallback] = useState<
     ((digit: string, mark: "not-in") => void) | null
@@ -78,15 +80,19 @@ export const TutorialProvider: React.FC<{ children: React.ReactNode }> = ({
       crossOuts: 0,
     });
     setCellMarks({}); // Clear all cell marks
+    continueTutorial.current = true;
   };
 
   const updateTutorialFromGuess = (
     guess: number,
     exactMatches: number,
     partialMatches: number,
-    turn: number
+    turn: number,
   ) => {
     let currentState = tutorialState;
+    if (!continueTutorial.current) {
+      return;
+    }
 
     if (turn === 1) {
       // Convert guess to array of digits
@@ -102,11 +108,17 @@ export const TutorialProvider: React.FC<{ children: React.ReactNode }> = ({
       exactMatches,
       partialMatches,
       currentState,
-      tutorialData
+      tutorialData,
     );
 
     setTutorialState(newState);
     setTutorialData(newData);
+
+    // CHECK 2: after running the function, did we get highlighted cells?
+    // if yes, we have all the clues we need, stop calling this function
+    if (newState.highlightedCells.some((row) => row.some((cell) => cell))) {
+      continueTutorial.current = false;
+    }
   };
 
   const markCell = (row: number, col: number, mark: "in" | "out" | "undo") => {
@@ -139,7 +151,7 @@ export const TutorialProvider: React.FC<{ children: React.ReactNode }> = ({
           "type:",
           typeof digitValue,
           "length:",
-          digitValue ? digitValue.length : "N/A"
+          digitValue ? digitValue.length : "N/A",
         );
         if (digitValue && digitValue !== "" && digitValue.length > 0) {
           console.log("Marking all occurrences of digit:", digitValue);
@@ -154,7 +166,7 @@ export const TutorialProvider: React.FC<{ children: React.ReactNode }> = ({
       } else {
         console.log(
           "Callback not available or not a function:",
-          gameDigitMarkCallback
+          gameDigitMarkCallback,
         );
       }
     }
