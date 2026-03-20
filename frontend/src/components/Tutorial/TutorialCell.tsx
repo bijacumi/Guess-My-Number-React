@@ -104,18 +104,6 @@ const TutorialCell: React.FC<TutorialCellProps> = ({
               top: dropdownPosition.y,
             }}
           >
-            {currentMark === "in" ? (
-              <div
-                className="dropdown-option"
-                onClick={() => handleMark("undo")}
-              >
-                Undo selection
-              </div>
-            ) : (
-              <div className="dropdown-option" onClick={() => handleMark("in")}>
-                Is in the number
-              </div>
-            )}
             {currentMark === "out" ? (
               <div
                 className="dropdown-option"
@@ -129,6 +117,18 @@ const TutorialCell: React.FC<TutorialCellProps> = ({
                 onClick={() => handleMark("out")}
               >
                 NOT in the number
+              </div>
+            )}
+            {currentMark === "in" ? (
+              <div
+                className="dropdown-option"
+                onClick={() => handleMark("undo")}
+              >
+                Undo selection
+              </div>
+            ) : (
+              <div className="dropdown-option" onClick={() => handleMark("in")}>
+                IN the number
               </div>
             )}
           </div>,

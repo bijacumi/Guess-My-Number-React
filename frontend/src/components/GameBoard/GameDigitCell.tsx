@@ -118,7 +118,7 @@ const GameDigitCell: React.FC<GameDigitCellProps> = ({
                 className="dropdown-option"
                 onClick={() => handleMark("not-in")}
               >
-                Not in the number
+                NOT in the number
               </div>
             )}
             {currentMark === "in" ? (
@@ -130,7 +130,7 @@ const GameDigitCell: React.FC<GameDigitCellProps> = ({
               </div>
             ) : (
               <div className="dropdown-option" onClick={() => handleMark("in")}>
-                In the number
+                IN the number
               </div>
             )}
             {currentMark === "position" ? (

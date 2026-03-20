@@ -100,7 +100,8 @@ app.post("/api/game/guess", (req, res) => {
         partialMatches,
         gameOver: true,
         won: true,
-        turnsTaken: currentGame.gameHistory.length, //add 1 here because the current turn is not counted yet. Actually check to see if the problem is here or in another place, maybe on the frontend.
+        turnsRemaining: currentGame.turnsRemaining,
+        turnsTaken: 10 - currentGame.turnsRemaining, // different way of calculating the number of turns taken.
         targetNumber: currentGame.targetNumber,
       });
     }
@@ -114,6 +115,8 @@ app.post("/api/game/guess", (req, res) => {
         partialMatches,
         gameOver: true,
         won: false,
+        turnsRemaining: currentGame.turnsRemaining,
+        turnsTaken: currentGame.gameHistory.length,
         targetNumber: currentGame.targetNumber,
       });
     }

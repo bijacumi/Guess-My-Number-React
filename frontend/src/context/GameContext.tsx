@@ -135,7 +135,6 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({
           targetNumber,
         } = data;
 
-        // Update turns
         if (!gameOver) {
           setCurrentTurns(data.turnsRemaining);
         }
@@ -148,6 +147,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({
 
         // Check for win condition
         if (gameOver && won) {
+          setCurrentTurns(data.turnsRemaining);
           setIsPlaying(false);
           openModal("win", { number: targetNumber, turns: turnsTaken });
           return { exactMatches, partialMatches };
@@ -155,6 +155,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({
 
         // Check for lose condition
         if (gameOver && !won) {
+          setCurrentTurns(data.turnsRemaining);
           setIsPlaying(false);
           openModal("lose", { number: targetNumber });
         }
