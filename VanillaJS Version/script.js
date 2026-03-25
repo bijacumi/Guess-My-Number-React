@@ -397,7 +397,7 @@ tutorial.addEventListener("click", () => displayWarningMessageFunction(false));
 closeWarningMessageBtn.addEventListener("click", closeWarningMessageFunction);
 playAgain.addEventListener("click", generateRandomNumber);
 getNumber.addEventListener("click", guessANumber);
-document.addEventListener("keydown", function (event) {
+document.addEventListener("keydown", (event) => {
   if (enterKeyEnabled && event.key === "Enter") {
     guessANumber();
   }
@@ -410,7 +410,7 @@ document.addEventListener("keydown", function (e) {
   }
 });
 
-guessedNumber.addEventListener("input", function (event) {
+guessedNumber.addEventListener("input", (event) => {
   //ensure you can not input more than 5 digits
   let value = event.target.value;
   if (value.startsWith("0") && value.length === 1) {

@@ -53,9 +53,11 @@ You only have 10 turns in order to win. Have fun!`,
 
 **Step 3:** Use the digits from groups 2 and 3 (again, change their position from their last usage for more information) and select a random digit from the fourth group.
 
-By the third step (or even earlier), the computer will eliminate impossible options and and higlight with red the only possible way in which the digits of the number to be guessedc could be spread across the four groups. If there is only one possibility left before this third step, you can abandon the strategy because it will not yield any more useful inforation and continue with whatever guess you see fit.
+By the third step (or even earlier), the computer will eliminate impossible options and and higlight with red the only possible way in which the digits of the number to be guessed could be spread across the four groups. Also, on this last third step you will be able to know if the digit you added from the fourth group is in the number or not. 
 
-The clues offered in this strategy will only be useful if you follow the first three steps as described above. Otherwise, you will get false information. Have fun!`,
+In some rare cases, you will only be left with one possibility before the third step. In that case, you can abandon the strategy because it will not yield any more useful information and continue with whatever guess you see fit.
+
+The clues offered in this strategy will only be useful if you follow these three steps as described above. Otherwise, you will get false information. Choose wisely and have fun!`,
     type: "tutorial",
     buttons: {
       primary: "Got it",
